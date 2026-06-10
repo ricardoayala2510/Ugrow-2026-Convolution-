@@ -1,0 +1,20 @@
+CUDA Convolution Performance Analysis
+Input image: data/input.jpg
+Output images: data/output_blur.jpg and data/output_enhanced.jpg
+Image size: 307x350
+Channels: 3
+Timing method: CUDA events
+Iterations per test: 100
+Note: kernel time excludes image loading, image saving, cudaMalloc, and cudaMemcpy.
+Note: enhanced image is computed sequentially as sharpen(blur(original)).
+
+Test    Image Size    Block Size    Operation               Kernel Time ms      Throughput MPixels/s
+----------------------------------------------------------------------------------------------------
+1       307x350       8x8           Blur only                       0.0058                  18671.11
+2       307x350       8x8           Blur + sharpen                  0.0115                  18687.74
+3       307x350       16x16         Blur only                       0.0054                  20063.41
+4       307x350       16x16         Blur + sharpen                  0.0108                  19911.13
+5       307x350       32x8          Blur only                       0.0053                  20296.26
+6       307x350       32x8          Blur + sharpen                  0.0107                  20101.85
+7       307x350       32x16         Blur only                       0.0058                  18506.46
+8       307x350       32x16         Blur + sharpen                  0.0117                  18312.68

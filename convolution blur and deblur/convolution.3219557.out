@@ -1,0 +1,39 @@
+Running on:
+v330-021.ls6.tacc.utexas.edu
+Checking GPU:
+Tue Jun  9 15:56:33 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.195.03             Driver Version: 570.195.03     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-PCIE-40GB          On  |   00000000:06:00.0 Off |                    0 |
+| N/A   32C    P0             34W /  250W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Starting program...
+
+CUDA Convolution Performance Analysis
+Results written to data/performance_results.txt
+
+Test    Image Size    Block Size    Operation               Kernel Time ms      Throughput MPixels/s
+----------------------------------------------------------------------------------------------------
+1       307x350       8x8           Blur only                       0.0058                  18671.11
+2       307x350       8x8           Blur + sharpen                  0.0115                  18687.74
+3       307x350       16x16         Blur only                       0.0054                  20063.41
+4       307x350       16x16         Blur + sharpen                  0.0108                  19911.13
+5       307x350       32x8          Blur only                       0.0053                  20296.26
+6       307x350       32x8          Blur + sharpen                  0.0107                  20101.85
+7       307x350       32x16         Blur only                       0.0058                  18506.46
+8       307x350       32x16         Blur + sharpen                  0.0117                  18312.68
+Done.
