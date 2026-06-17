@@ -1,0 +1,32 @@
+rm -f conv
+rm -f gpu_benchmark_results.csv
+rm -f data/output_blur.jpg data/output_sharpen.jpg data/output_edge_detection.jpg data/output_emboss.jpg
+nvcc -O3 -std=c++17 -Iinclude src/main.cpp src/image_io.cpp src/convolution.cu -o conv
+Image size: 1300 x 897, channels: 3
+GPU-only benchmark
+Each image runs 4 CUDA convolutions: Blur, Sharpen, Edge Detection, Emboss
+Batch sizes: 2, 4, 8, ..., 1024 repeated uses of the same input image
+Only 4 sample output files are saved. Benchmark does not create 1024 output files.
+
+
+Saving only 4 sample outputs, not 1024 outputs...
+Saved data/output_blur.jpg
+Saved data/output_sharpen.jpg
+Saved data/output_edge_detection.jpg
+Saved data/output_emboss.jpg
+
+GPU timing results
+Images    Convolutions      GPU wall ms     GPU device ms    ms/image        ms/convolution    
+2         8                 33.835          33.816           16.917517       4.229379          
+4         16                67.609          67.595           16.902152       4.225538          
+8         32                135.201         135.186          16.900092       4.225023          
+16        64                166.675         166.662          10.417214       2.604303          
+32        128               328.942         328.929          10.279452       2.569863          
+64        256               658.414         658.400          10.287723       2.571931          
+128       512               1319.757        1319.744         10.310603       2.577651          
+256       1024              2628.876        2628.858         10.269045       2.567261          
+512       2048              5258.886        5258.858         10.271262       2.567815          
+1024      4096              10605.333       10605.286        10.356771       2.589193          
+
+Saved GPU benchmark table to gpu_benchmark_results.csv
+Use the GPU wall ms column for your comparison chart.
